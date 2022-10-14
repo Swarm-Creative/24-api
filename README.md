@@ -1,73 +1,48 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+[![Gitkraken Badge](https://img.shields.io/badge/Repo%20Powered%20By-Gitkraken-teal?style=plastic&logo=gitkraken)](https://www.gitkraken.com/invite/csheW1Ty)
+[![Swarm Badge](https://img.shields.io/badge/Powered%20by-Swarm%20Creative-yellowgreen?style=plastic&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACcSURBVHgBrZGxDYMwEEW/QpXOI2SDrJARMgJS+syQDZIRkgmyQRQWQGIBoIQKSqjgW1xhgUEH4klPsq07f+sM7MwLGzH0RC+yVmEbQprRij61jVfaibHsJwSes4K2NKIlvdOE5lCQOanW37jg4GkKpfiPBXyNZ3rDMCTIJW8oMM5T7VRTbWJNP07aAyswS2mWYOa8oUf6xfAV+9ED/7khQ198MsEAAAAASUVORK5CYII=)](https://swarmcreative.co)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# .24 Caliber (Working Title)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+An Unreal Engine 5-powered arcade shooter inspired by Wordle and Destiny 2
 
-## Description
+## Elevator Pitch
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+_You have 24 hours to post the best score possible in this stylish arcade wave-based shooter. Every day rotating modifiers change your and the enemy's advantages/disadvantages._
 
-## Installation
+## Development Stack
 
-```bash
-$ yarn install
-```
+- [Unreal Engine 5](https://www.unrealengine.com/en-US/blog/unreal-engine-5-is-now-available-in-early-access)
+- [Quixel Mixer](https://quixel.com/mixer)
+- [Blender](https://www.blender.org/)
+- [NestJS (Leaderboard and Modifiers API)](https://nestjs.com/)
+- [Railway (API Hosting)](https://railway.app/)
+- [Epic Online Services (User Auth)](https://dev.epicgames.com/en-US/services)
+- [ZenHub *Free Edition* (Project Management)](https://app.zenhub.com/)
 
-## Running the app
+## Target Platforms
 
-```bash
-# development
-$ yarn run start
+- iOS
+- Android
+- PC
+- Mac
+- tvOS
 
-# watch mode
-$ yarn run start:dev
+## Dev Team
 
-# production mode
-$ yarn run start:prod
-```
+- Game Designer / Lead Programmer / Project Lead
+  - Simon Norman
+    - [Twitter](https://twitter.com/ZhymonNorman)
+    - [LinkedIn](https://www.linkedin.com/in/simonjnorman/)
+- Gameplay Programmer / Tech Artist
+  - Amber McCausley
+    - [LinkedIn](https://www.linkedin.com/in/amber-mccausley-07a1b473/)
 
-## Test
+## Links
 
-```bash
-# unit tests
-$ yarn run test
+- [High Concept Document](https://docs.google.com/document/d/1f3JrzcUsbDiUyb51hPZmgMo40Hl0v2VUxBM5Y9sC518/edit?usp=sharing)
 
-# e2e tests
-$ yarn run test:e2e
+## Follow Swarm Creative on Social Media
 
-# test coverage
-$ yarn run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- [Facebook](https://www.facebook.com/swarmcreative)
+- [Instagram](https://www.instagram.com/swarmcreative/)
+- [Twitter](https://twitter.com/SwarmCreative)
