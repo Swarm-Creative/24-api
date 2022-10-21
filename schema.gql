@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mod {
+  _id: ID!
+  name: String!
+  attribute: String
+  affectObjectWTag: String!
+  iconUrl: String!
+  mods: Mod!
+  value: Float!
+}
+
+type User {
+  _id: ID!
+  uid: String!
+  name: String!
+  avatarUrl: Float!
+  currentHighScore: Score
+}
+
+type Score {
+  _id: ID!
+  user: User!
+  platform: String!
+  country: String
+  scoreValue: Float!
+  mods: [Mod!]!
+}
+
+type Leaderboard {
+  _id: ID!
+  date: DateTime!
+  expiresAt: DateTime!
+  scores: [Score!]
+  activeMods: [Mod!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  getById(id: String!): Leaderboard!
+  getGameState: Leaderboard!
+  getUserByUid(id: String!): User!
+}
