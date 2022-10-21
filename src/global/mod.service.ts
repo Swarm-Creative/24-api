@@ -1,7 +1,7 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema, isValidObjectId } from 'mongoose';
-import { Mod, ModDocument } from './entities/mod.entity';
+import { Mod, ModDocument } from './mod.entity';
 import { ServerError } from './serverError';
 
 @Injectable()

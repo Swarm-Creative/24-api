@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Score } from 'src/global/entities/score.entity';
+import { Score } from 'src/score/score.schema';
 
 @ObjectType()
 @Schema({ collection: 'users' })

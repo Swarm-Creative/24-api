@@ -1,8 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Schema as MongooseSchema, isValidObjectId } from 'mongoose';
-import { Mod } from 'src/global/entities/mod.entity';
-import { Score } from 'src/global/entities/score.entity';
+import { Mod } from 'src/global/mod.entity';
+import { Score } from 'src/score/score.schema';
 import { ServerError } from 'src/global/serverError';
 import { Leaderboard, LeaderboardDocument } from './leaderboard.schema';
 

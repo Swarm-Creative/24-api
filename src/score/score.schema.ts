@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
-import { Mod } from './mod.entity';
+import { Mod } from '../global/mod.entity';
 import { User } from 'src/user/user.schema';
 
 @ObjectType()

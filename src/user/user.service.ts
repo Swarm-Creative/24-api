@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model} from 'mongoose';
-import { Score } from 'src/global/entities/score.entity';
+import { Score } from 'src/score/score.schema';
 import { ServerError } from 'src/global/serverError';
 import { User, UserDocument } from './user.schema';
 

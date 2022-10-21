@@ -1,6 +1,6 @@
 import { Resolver, Query, Args, ResolveReference } from '@nestjs/graphql';
-import { Model, Schema as MongooseSchema, isValidObjectId } from 'mongoose';
-import { Score } from './entities/score.entity';
+import { Schema as MongooseSchema } from 'mongoose';
+import { Score } from './score.schema';
 import { ScoreService } from './score.service';
 
 @Resolver(() => Score)
