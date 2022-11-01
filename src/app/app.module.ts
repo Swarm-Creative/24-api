@@ -8,6 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UserModule } from 'src/user/user.module';
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose';
+import { ScoreModule } from 'src/score/score.module';
 
 @Module({
   imports: [
@@ -16,13 +17,14 @@ import { MongooseModule } from '@nestjs/mongoose';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
-        uri: `mongodb://${config.get<string>('MONGOUSER')}:${config.get<string>('MONGOPASSWORD')}@${config.get<string>('MONGOHOST')}:${config.get<string>('MONGOPORT')}`        
+        uri: `mongodb://${config.get<string>('MONGOUSER')}:${config.get<string>('MONGOPASSWORD')}@${config.get<string>('MONGOHOST')}:${config.get<string>('MONGOPORT')}`,
+        dbName: `${config.get<string>('MONOGODATABASE') || 'test'}`        
       })
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
     autoSchemaFile: 'schema.gql',
-  }), LeaderboardModule, UserModule,    
+  }), LeaderboardModule, UserModule, ScoreModule    
 ],
   controllers: [AppController],
   providers: [AppService],

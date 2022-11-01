@@ -18,4 +18,4 @@ import { UserService } from 'src/user/user.service';
   ],
   providers: [ScoreResolver, ScoreService, UserService, ModService, Logger]
 })
-export class LeaderboardModule {}
+export class ScoreModule {}

@@ -3,25 +3,24 @@
 # ------------------------------------------------------
 
 type Mod {
-  _id: ID!
-  name: String!
+  _id: ID
+  name: String
   attribute: String
-  affectObjectWTag: String!
-  iconUrl: String!
-  mods: Mod!
-  value: Float!
+  affectObjectWTag: String
+  iconUrl: String
+  value: Float
 }
 
 type User {
   _id: ID!
-  uid: String!
-  name: String!
-  avatarUrl: Float!
+  uid: String
+  name: String
+  avatarUrl: String
   currentHighScore: Score
 }
 
 type Score {
-  _id: ID!
+  _id: ID
   user: User!
   platform: String!
   country: String
@@ -46,4 +45,26 @@ type Query {
   getById(id: String!): Leaderboard!
   getGameState: Leaderboard!
   getUserByUid(id: String!): User!
+  getScores: [Score!]!
+}
+
+type Mutation {
+  createScore(createScoreInput: CreateScoreInput!): Score!
+}
+
+input CreateScoreInput {
+  """User who set this score"""
+  user: String
+
+  """Platform that this score was set on"""
+  platform: String!
+
+  """Country user is from"""
+  country: String
+
+  """Value of the score"""
+  scoreValue: Float!
+
+  """List of Mods that were active when this score was set"""
+  mods: [String!]!
 }

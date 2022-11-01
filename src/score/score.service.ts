@@ -5,6 +5,7 @@ import { Mod } from 'src/global/mod.entity';
 import { User } from 'src/user/user.schema';
 import { Score, ScoreDocument } from 'src/score/score.schema';
 import { ServerError } from '../global/serverError';
+import { CreateScoreInput } from 'src/dto/create-score-input';
 
 const dataLoader = [
     { path: 'mods', model: Mod.name, justOne: false },
@@ -18,6 +19,17 @@ export class ScoreService {
         private scoreModel: Model<ScoreDocument>,
         private readonly logger: Logger
     ) {}
+
+    async create(createScoreInput: CreateScoreInput) {
+        try{
+          const score = new this.scoreModel(createScoreInput);
+          await score.populate(dataLoader);
+          return score.save();
+        }
+        catch (error) {
+          return new Error(error.message)
+        }
+      }
 
     async getById(id: MongooseSchema.Types.ObjectId) {
         try {

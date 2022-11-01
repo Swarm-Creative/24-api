@@ -6,10 +6,10 @@ import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
 @Schema({ collection: 'mods' })
 @Directive('@key(fields: "_id")')
 export class Mod {
-  @Field(() => ID)
+  @Field(() => ID, { nullable: true})
   _id: MongooseSchema.Types.ObjectId;
 
-  @Field(() => String, { nullable: false })
+  @Field(() => String, { nullable: true })
   @Prop()
   name: string;
 
@@ -17,19 +17,15 @@ export class Mod {
   @Prop()
   attribute: string;
 
-  @Field(() => String, { nullable: false })
+  @Field(() => String, { nullable: true })
   @Prop()
   affectObjectWTag: 'player' | 'enemy' | 'world';
 
-  @Field(() => String, { nullable: false })
+  @Field(() => String, { nullable: true })
   @Prop()
   iconUrl: string;
 
-  @Field(() => Mod, { nullable: false })
-  @Prop()
-  mods: Array<Mod>;
-
-  @Field(() => Number || Boolean, { nullable: false})
+  @Field(() => Number || Boolean, { nullable: true})
   @Prop({type: Number || Boolean})
   value: number | boolean;
 }
