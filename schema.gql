@@ -43,7 +43,8 @@ type Query {
   getGameState: Leaderboard!
   getUserByUid(id: String!): User!
   getScores: [Score!]!
-  getScoresByUser(userId: String!): [Score!]!
+  getScoresByUser(userObjectId: String!): [Score!]!
+  getScoresByLeaderboard(leaderboardId: String!): [Score!]!
 }
 
 type Mutation {

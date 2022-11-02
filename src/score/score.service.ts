@@ -51,7 +51,10 @@ export class ScoreService {
 
   async findAll() {
     try {
-      const data = await this.scoreModel.find().populate(dataLoader);
+      const data = await this.scoreModel
+        .find()
+        .populate(dataLoader)
+        .sort({ scoreValue: "desc" });
 
       if (data.length <= 0) {
         throw new ServerError("Invalid result list score");
@@ -63,11 +66,31 @@ export class ScoreService {
     }
   }
 
-  async findAllByUser(userId: MongooseSchema.Types.ObjectId) {
+  async findAllByUser(userObjectId: MongooseSchema.Types.ObjectId) {
     try {
       const data = await this.scoreModel
-        .find({ user: { $eq: new mongoose.Types.ObjectId(`${userId}`) } })
-        .populate(dataLoader);
+        .find({ user: { $eq: new mongoose.Types.ObjectId(`${userObjectId}`) } })
+        .populate(dataLoader)
+        .sort({ createdAt: "desc" });
+
+      if (data.length <= 0) {
+        throw new ServerError("Invalid result list score by user");
+      }
+      return data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new ServerError(error);
+    }
+  }
+
+  async findAllByLeaderboard(leaderboardId: MongooseSchema.Types.ObjectId) {
+    try {
+      const data = await this.scoreModel
+        .find({
+          leaderboard: { $eq: new mongoose.Types.ObjectId(`${leaderboardId}`) },
+        })
+        .populate(dataLoader)
+        .sort({ scoreValue: "desc" });
 
       if (data.length <= 0) {
         throw new ServerError("Invalid result list score by user");

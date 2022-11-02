@@ -34,9 +34,17 @@ export class ScoreResolver {
 
   @Query(() => [Score], { name: "getScoresByUser" })
   async findAllByUser(
-    @Args("userId", { type: () => String })
-    userId: MongooseSchema.Types.ObjectId
+    @Args("userObjectId", { type: () => String })
+    userObjectId: MongooseSchema.Types.ObjectId
   ) {
-    return this.scoreService.findAllByUser(userId);
+    return this.scoreService.findAllByUser(userObjectId);
+  }
+
+  @Query(() => [Score], { name: "getScoresByLeaderboard" })
+  async findAllByLeaderboard(
+    @Args("leaderboardId", { type: () => String })
+    leaderboardId: MongooseSchema.Types.ObjectId
+  ) {
+    return this.scoreService.findAllByLeaderboard(leaderboardId);
   }
 }
