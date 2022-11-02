@@ -11,6 +11,17 @@ type Mod {
   value: Float
 }
 
+type Leaderboard {
+  _id: ID!
+  expiresAt: DateTime!
+  activeMods: [Mod!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type User {
   _id: ID!
   uid: String
@@ -22,39 +33,35 @@ type User {
 type Score {
   _id: ID
   user: User!
+  leaderboard: Leaderboard!
   platform: String!
   country: String
   scoreValue: Float!
-  mods: [Mod!]!
 }
-
-type Leaderboard {
-  _id: ID!
-  date: DateTime!
-  expiresAt: DateTime!
-  scores: [Score!]
-  activeMods: [Mod!]!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
 
 type Query {
-  getById(id: String!): Leaderboard!
+  getLeaderboardById(id: String!): Leaderboard!
   getGameState: Leaderboard!
   getUserByUid(id: String!): User!
   getScores: [Score!]!
 }
 
 type Mutation {
+  createLeaderboard(createLeaderboardInput: CreateLeaderboardInput!): Leaderboard!
   createScore(createScoreInput: CreateScoreInput!): Score!
+}
+
+input CreateLeaderboardInput {
+  """List of Mods that were active when this score was set"""
+  activeMods: [String!]!
 }
 
 input CreateScoreInput {
   """User who set this score"""
   user: String
+
+  """Leaderboard this score is associated with"""
+  leaderboard: String
 
   """Platform that this score was set on"""
   platform: String!
@@ -64,7 +71,4 @@ input CreateScoreInput {
 
   """Value of the score"""
   scoreValue: Float!
-
-  """List of Mods that were active when this score was set"""
-  mods: [String!]!
 }

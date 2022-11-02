@@ -1,12 +1,12 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
+import { Field, ID, ObjectType, Directive } from "@nestjs/graphql";
 
 @ObjectType()
-@Schema({ collection: 'mods' })
+@Schema({ collection: "mods" })
 @Directive('@key(fields: "_id")')
 export class Mod {
-  @Field(() => ID, { nullable: true})
+  @Field(() => ID, { nullable: true })
   _id: MongooseSchema.Types.ObjectId;
 
   @Field(() => String, { nullable: true })
@@ -19,14 +19,14 @@ export class Mod {
 
   @Field(() => String, { nullable: true })
   @Prop()
-  affectObjectWTag: 'player' | 'enemy' | 'world';
+  affectObjectWTag: "player" | "enemy" | "world";
 
   @Field(() => String, { nullable: true })
   @Prop()
   iconUrl: string;
 
-  @Field(() => Number || Boolean, { nullable: true})
-  @Prop({type: Number || Boolean})
+  @Field(() => Number || Boolean, { nullable: true })
+  @Prop({ type: Number || Boolean })
   value: number | boolean;
 }
 

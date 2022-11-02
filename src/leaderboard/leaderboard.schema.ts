@@ -1,12 +1,10 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
-import { Score } from 'src/score/score.schema';
-import { Mod } from 'src/global/mod.entity';
-
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
+import { Field, ID, ObjectType, Directive } from "@nestjs/graphql";
+import { Mod } from "src/global/mod.entity";
 
 @ObjectType()
-@Schema({ collection: 'leaderboards' })
+@Schema({ collection: "leaderboards", timestamps: true })
 @Directive('@key(fields: "_id")')
 export class Leaderboard {
   @Field(() => ID)
@@ -14,19 +12,11 @@ export class Leaderboard {
 
   @Field(() => Date, { nullable: false })
   @Prop()
-  date: Date;
-
-  @Field(() => Date, { nullable: false })
-  @Prop()
   expiresAt: Date;
 
-  @Field(() => [Score], { nullable: true })
-  @Prop()
-  scores: Score[];
-
-  @Field(() =>[Mod], { nullable: false })
-  @Prop()
-  activeMods: Mod[];
+  @Field(() => [Mod], { nullable: false })
+  @Prop({ default: new Array<MongooseSchema.Types.ObjectId>(), required: true })
+  activeMods: [MongooseSchema.Types.ObjectId];
 }
 
 export type LeaderboardDocument = Leaderboard & Document;

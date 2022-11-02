@@ -1,8 +1,14 @@
-import { Resolver, Query, Args, ResolveReference, Mutation } from '@nestjs/graphql';
-import { Schema as MongooseSchema } from 'mongoose';
-import { CreateScoreInput } from 'src/dto/create-score-input';
-import { Score } from './score.schema';
-import { ScoreService } from './score.service';
+import {
+  Resolver,
+  Query,
+  Args,
+  ResolveReference,
+  Mutation,
+} from "@nestjs/graphql";
+import { Schema as MongooseSchema } from "mongoose";
+import { CreateScoreInput } from "src/dto/create-score-input";
+import { Score } from "./score.schema";
+import { ScoreService } from "./score.service";
 
 @Resolver(() => Score)
 export class ScoreResolver {
@@ -17,13 +23,12 @@ export class ScoreResolver {
   }
 
   @Mutation(() => Score)
-  createScore(@Args('createScoreInput') createScoreInput: CreateScoreInput) {
+  createScore(@Args("createScoreInput") createScoreInput: CreateScoreInput) {
     return this.scoreService.create(createScoreInput);
   }
 
-  @Query(() => [Score], { name: 'getScores' })
+  @Query(() => [Score], { name: "getScores" })
   async findAll() {
     return this.scoreService.findAll();
   }
-
 }

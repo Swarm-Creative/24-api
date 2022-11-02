@@ -1,7 +1,7 @@
-import { Resolver, Query, Args, ResolveReference } from '@nestjs/graphql';
-import { Model, Schema as MongooseSchema, isValidObjectId } from 'mongoose';
-import { Mod } from './mod.entity';
-import { ModService } from './mod.service';
+import { Resolver, Query, Args, ResolveReference } from "@nestjs/graphql";
+import { Model, Schema as MongooseSchema, isValidObjectId } from "mongoose";
+import { Mod } from "./mod.entity";
+import { ModService } from "./mod.service";
 
 @Resolver(() => Mod)
 export class ModResolver {
@@ -15,7 +15,7 @@ export class ModResolver {
     return await this.modService.getById(reference._id);
   }
 
-  @Query(() => [Mod], { name: 'getMods' })
+  @Query(() => [Mod], { name: "getMods" })
   async findAll() {
     return this.modService.findAll();
   }

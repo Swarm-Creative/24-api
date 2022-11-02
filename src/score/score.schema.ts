@@ -1,23 +1,36 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Field, ID, ObjectType, Directive } from '@nestjs/graphql';
-import { Mod } from '../global/mod.entity';
-import { User } from 'src/user/user.schema';
-import * as mongoose from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
+import { Field, ID, ObjectType, Directive } from "@nestjs/graphql";
+import { Mod } from "../global/mod.entity";
+import { User } from "src/user/user.schema";
+import * as mongoose from "mongoose";
+import { Leaderboard } from "src/leaderboard/leaderboard.schema";
 @ObjectType()
-@Schema({ collection: 'scores' })
+@Schema({ collection: "scores", timestamps: true })
 @Directive('@key(fields: "_id")')
 export class Score {
-  @Field(() => ID, { nullable: true})
+  @Field(() => ID, { nullable: true })
   _id: MongooseSchema.Types.ObjectId;
 
-  @Field(() => User, { nullable: false})
-  @Prop({ default: MongooseSchema.Types.ObjectId, required: true})
+  @Field(() => User, { nullable: false })
+  @Prop({ default: MongooseSchema.Types.ObjectId, required: true })
   user: MongooseSchema.Types.ObjectId;
+
+  @Field(() => Leaderboard, { nullable: false })
+  @Prop({ default: MongooseSchema.Types.ObjectId, required: true })
+  leaderboard: MongooseSchema.Types.ObjectId;
 
   @Field(() => String, { nullable: false })
   @Prop()
-  platform: 'ios' | 'android' | 'pc' | 'mac' | 'tvos' | 'steam-deck';
+  platform:
+    | "ios"
+    | "android"
+    | "pc"
+    | "mac"
+    | "tvos"
+    | "steamdeck"
+    | "playstation"
+    | "xbox";
 
   @Field(() => String, { nullable: true })
   @Prop()
@@ -26,10 +39,6 @@ export class Score {
   @Field(() => Number, { nullable: false })
   @Prop()
   scoreValue: number;
-
-  @Field(() => [Mod], { nullable: false })
-  @Prop({ default: new Array<MongooseSchema.Types.ObjectId>, required: true })
-  mods: [MongooseSchema.Types.ObjectId];
 }
 
 export type ScoreDocument = Score & Document;

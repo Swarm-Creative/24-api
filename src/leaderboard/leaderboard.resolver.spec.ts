@@ -1,7 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { LeaderboardResolver } from './leaderboard.resolver';
+import { Test, TestingModule } from "@nestjs/testing";
+import { LeaderboardResolver } from "./leaderboard.resolver";
 
-describe('LeaderboardResolver', () => {
+describe("LeaderboardResolver", () => {
   let resolver: LeaderboardResolver;
 
   beforeEach(async () => {
@@ -12,7 +12,7 @@ describe('LeaderboardResolver', () => {
     resolver = module.get<LeaderboardResolver>(LeaderboardResolver);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(resolver).toBeDefined();
   });
 });
