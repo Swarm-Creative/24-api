@@ -31,4 +31,12 @@ export class ScoreResolver {
   async findAll() {
     return this.scoreService.findAll();
   }
+
+  @Query(() => [Score], { name: "getScoresByUser" })
+  async findAllByUser(
+    @Args("userId", { type: () => String })
+    userId: MongooseSchema.Types.ObjectId
+  ) {
+    return this.scoreService.findAllByUser(userId);
+  }
 }

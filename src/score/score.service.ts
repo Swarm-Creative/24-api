@@ -7,6 +7,7 @@ import { Score, ScoreDocument } from "src/score/score.schema";
 import { Leaderboard } from "src/leaderboard/leaderboard.schema";
 import { ServerError } from "../global/serverError";
 import { CreateScoreInput } from "src/dto/create-score-input";
+import * as mongoose from "mongoose";
 
 const dataLoader = [
   { path: "user", model: User.name, justOne: true },
@@ -53,7 +54,23 @@ export class ScoreService {
       const data = await this.scoreModel.find().populate(dataLoader);
 
       if (data.length <= 0) {
-        throw new ServerError("Invalid result list leaderboard");
+        throw new ServerError("Invalid result list score");
+      }
+      return data;
+    } catch (error) {
+      this.logger.error(error);
+      throw new ServerError(error);
+    }
+  }
+
+  async findAllByUser(userId: MongooseSchema.Types.ObjectId) {
+    try {
+      const data = await this.scoreModel
+        .find({ user: { $eq: new mongoose.Types.ObjectId(`${userId}`) } })
+        .populate(dataLoader);
+
+      if (data.length <= 0) {
+        throw new ServerError("Invalid result list score by user");
       }
       return data;
     } catch (error) {
