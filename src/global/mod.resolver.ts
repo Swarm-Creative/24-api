@@ -1,5 +1,5 @@
-import { Resolver, Query, Args, ResolveReference } from "@nestjs/graphql";
-import { Model, Schema as MongooseSchema, isValidObjectId } from "mongoose";
+import { Resolver, Query, ResolveReference } from "@nestjs/graphql";
+import { Schema as MongooseSchema } from "mongoose";
 import { Mod } from "./mod.entity";
 import { ModService } from "./mod.service";
 

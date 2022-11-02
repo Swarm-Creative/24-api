@@ -1,8 +1,6 @@
 import { Field, ID, ObjectType, Directive } from "@nestjs/graphql";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Schema as MongooseSchema } from "mongoose";
-import { Score } from "src/score/score.schema";
-import * as mongoose from "mongoose";
 
 @ObjectType()
 @Schema({ collection: "users" })
@@ -23,10 +21,6 @@ export class User extends Document {
   @Field(() => String, { nullable: true })
   @Prop()
   avatarUrl: number;
-
-  @Field(() => Score, { nullable: true })
-  @Prop({ type: Object })
-  currentHighScore: Score;
 }
 
 export type UserDocument = User & Document;

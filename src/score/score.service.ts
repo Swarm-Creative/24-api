@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Schema as MongooseSchema, isValidObjectId } from "mongoose";
 import { Mod } from "src/global/mod.entity";
@@ -9,9 +9,13 @@ import { ServerError } from "../global/serverError";
 import { CreateScoreInput } from "src/dto/create-score-input";
 
 const dataLoader = [
-  { path: "mods", model: Mod.name, justOne: false },
   { path: "user", model: User.name, justOne: true },
-  { path: "leaderboard", model: Leaderboard.name, justOne: true },
+  {
+    path: "leaderboard",
+    model: Leaderboard.name,
+    justOne: true,
+    populate: { path: "activeMods", model: Mod.name, justOne: false },
+  },
 ];
 
 @Injectable()
@@ -49,7 +53,7 @@ export class ScoreService {
       const data = await this.scoreModel.find().populate(dataLoader);
 
       if (data.length <= 0) {
-        throw new ServerError("Invalid result list mod");
+        throw new ServerError("Invalid result list leaderboard");
       }
       return data;
     } catch (error) {

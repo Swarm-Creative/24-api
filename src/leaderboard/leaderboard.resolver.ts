@@ -21,8 +21,10 @@ export class LeaderboardResolver {
   }
 
   @Mutation(() => Leaderboard)
-  createLeaderboard(@Args("createLeaderboardInput") createLeaderboardInput: CreateLeaderboardInput) {
+  createLeaderboard(
+    @Args("createLeaderboardInput")
+    createLeaderboardInput: CreateLeaderboardInput
+  ) {
     return this.leaderboardService.create(createLeaderboardInput);
   }
-
 }

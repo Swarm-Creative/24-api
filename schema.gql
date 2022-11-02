@@ -27,7 +27,6 @@ type User {
   uid: String
   name: String
   avatarUrl: String
-  currentHighScore: Score
 }
 
 type Score {

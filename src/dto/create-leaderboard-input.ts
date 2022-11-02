@@ -1,5 +1,5 @@
 import { Schema as MongooseSchema } from "mongoose";
-import { Field, InputType, OmitType, ID } from "@nestjs/graphql";
+import { Field, InputType, OmitType } from "@nestjs/graphql";
 import { Leaderboard } from "src/leaderboard/leaderboard.schema";
 
 @InputType()

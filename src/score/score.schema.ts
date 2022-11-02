@@ -1,9 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Schema as MongooseSchema } from "mongoose";
 import { Field, ID, ObjectType, Directive } from "@nestjs/graphql";
-import { Mod } from "../global/mod.entity";
 import { User } from "src/user/user.schema";
-import * as mongoose from "mongoose";
 import { Leaderboard } from "src/leaderboard/leaderboard.schema";
 @ObjectType()
 @Schema({ collection: "scores", timestamps: true })

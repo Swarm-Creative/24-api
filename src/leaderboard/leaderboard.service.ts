@@ -2,7 +2,6 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Schema as MongooseSchema, isValidObjectId } from "mongoose";
 import { Mod } from "src/global/mod.entity";
-import { Score } from "src/score/score.schema";
 import { ServerError } from "src/global/serverError";
 import { Leaderboard, LeaderboardDocument } from "./leaderboard.schema";
 import { CreateLeaderboardInput } from "src/dto/create-leaderboard-input";
@@ -21,13 +20,13 @@ export class LeaderboardService {
     try {
       const expiry = new Date(Date.now() + 60 * 60 * 24 * 1000);
 
-      const score = new this.leaderboardModel({
+      const leaderboard = new this.leaderboardModel({
         ...createLeaderboardInput,
         expiresAt: expiry,
       });
 
-      await score.populate(dataLoader);
-      return score.save();
+      await leaderboard.populate(dataLoader);
+      return leaderboard.save();
     } catch (error) {
       return new Error(error.message);
     }
